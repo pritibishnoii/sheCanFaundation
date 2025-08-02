@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+const API_URL = import.meta.env.VITE_APP_BACKEND_API || 'http://localhost:5000/api';
 const Leaderboard = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/leaderboard")
+    axios.get(`${API_URL}/api/leaderboard`)
       .then(res => {
         setData(res.data);
         setLoading(false);

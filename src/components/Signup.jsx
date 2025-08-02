@@ -1,7 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-
+const API_URL = import.meta.env.VITE_APP_BACKEND_API || 'http://localhost:5000/api';
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const Signup = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', {
+      const response = await axios.post(`${API_URL}/api/signup`, {
         name: formData.name,
         email: formData.email,
         password: formData.password

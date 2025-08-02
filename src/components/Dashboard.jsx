@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-
+const API_URL = import.meta.env.VITE_APP_BACKEND_API || 'http://localhost:5000/api';
 const Dashboard = () => {
   const [intern, setIntern] = useState(null);
   const [showCopied, setShowCopied] = useState(false);
@@ -18,7 +18,7 @@ const Dashboard = () => {
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-    axios.get("http://localhost:5000/api/intern")
+    axios.get(`${API_URL}/api/intern`)
       .then(res => {
         setIntern(res.data);
         setLoading(false);
